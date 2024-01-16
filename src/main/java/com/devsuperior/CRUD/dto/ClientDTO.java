@@ -1,20 +1,22 @@
 package com.devsuperior.CRUD.dto;
 
 import com.devsuperior.CRUD.entities.Client;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
+    @NotBlank
     private String name;
     private String cpf;
+    @Positive(message = "Valor precisa ser positivo")
     private Double income;
+    @PastOrPresent(message = "A data informada é inválida, 'Data futura'.")
     private LocalDate birth_date;
+    @Positive(message = "Valor precisa ser positivo")
     private Integer children;
-
-    public ClientDTO() {
-    }
 
     public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birth_date, Integer children) {
         this.id = id;
